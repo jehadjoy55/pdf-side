@@ -8,21 +8,29 @@
     /* Base Styles */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.8;
       margin: 0;
       padding: 0;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    /* Light Mode */
+    body.light {
       background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
       color: #2d3748;
-      overflow-x: hidden;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: linear-gradient(135deg, #2d3748, #1a202c);
+      color: #e2e8f0;
     }
 
     /* Header */
     h1 {
       text-align: center;
       font-size: 28px;
-      color: #2b6cb0;
       padding: 20px 0;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     /* PDF List */
@@ -42,12 +50,18 @@
       margin: 10px 0;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
     }
 
     li:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    li.dark {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     a {
@@ -56,12 +70,72 @@
       font-size: 16px;
       font-weight: 500;
       text-decoration: none;
-      color: #2d3748;
+      color: inherit;
       transition: color 0.3s ease;
     }
 
     a:hover {
       color: #1a202c;
+    }
+
+    /* RGB Glow Effect */
+    li:hover {
+      border: 2px solid;
+      border-image-source: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+      border-image-slice: 1;
+    }
+
+    /* Toggle Button */
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .toggle-container label {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+    }
+
+    .toggle-container label input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 30px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #4caf50;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(30px);
     }
 
     /* Animation on Load */
@@ -93,20 +167,16 @@
     ul::-webkit-scrollbar-track {
       background: #e2e8f0;
     }
-
-    /* Responsive Design */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 24px;
-      }
-      a {
-        font-size: 14px;
-      }
-    }
   </style>
 </head>
-<body>
+<body class="light">
   <h1>পিডিএফ তালিকা</h1>
+  <div class="toggle-container">
+    <label>
+      <input type="checkbox" id="theme-toggle">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
   <ul>
     <li><a href="uchcharon-12-font-02-10-24.pdf" target="_blank">১। উচ্চারণ 12 font-02.10.24</a></li>
     <li><a href="uchcharon-12-font-227-08-24.pdf" target="_blank">১। উচ্চারণ 12 font-227.08.24</a></li>
@@ -122,5 +192,21 @@
     <li><a href="email-abedanpatra-likhon-06-11-24.pdf" target="_blank">০৯। ই-মেইল, আবেদনপত্র লিখন 06.11.24</a></li>
     <li><a href="vab-samprosaron-02-11-24.pdf" target="_blank">১০। ভাব-সম্প্রসারণ; সারমর্ম, সারাংশ 02.11.24</a></li>
   </ul>
+
+  <script>
+    // Theme Toggle Functionality
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const listItems = document.querySelectorAll('li');
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+
+      listItems.forEach((item) => {
+        item.classList.toggle('dark');
+      });
+    });
+  </script>
 </body>
 </html>
