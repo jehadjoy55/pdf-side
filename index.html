@@ -1,54 +1,126 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF তালিকা</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-            font-size: 18px;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পিডিএফ তালিকা</title>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+      color: #2d3748;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      color: #2b6cb0;
+      padding: 20px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* PDF List */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      width: 90%;
+      max-width: 500px;
+      overflow-y: auto;
+    }
+
+    li {
+      background: white;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+      margin: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    a {
+      display: block;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #2d3748;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #1a202c;
+    }
+
+    /* Animation on Load */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    li {
+      animation: fadeInUp 0.5s ease-in-out;
+    }
+
+    /* Scrollbar Styling */
+    ul::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ul::-webkit-scrollbar-thumb {
+      background: #2b6cb0;
+      border-radius: 10px;
+    }
+
+    ul::-webkit-scrollbar-track {
+      background: #e2e8f0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 24px;
+      }
+      a {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>পিডিএফ তালিকা</h1>
-    <ul>
-        <li><a href="uchcharon-12-font-02-10-24.pdf" target="_blank">১। উচ্চারণ 12 font-02.10.24</a></li>
-        <li><a href="uchcharon-12-font-227-08-24.pdf" target="_blank">১। উচ্চারণ 12 font-227.08.24</a></li>
-        <li><a href="banan-11-09-24.pdf" target="_blank">২। বানান 11.09.24</a></li>
-        <li><a href="banan-18-09-24.pdf" target="_blank">২। বানান 18.09.24</a></li>
-        <li><a href="banan-111-09-24.pdf" target="_blank">২। বানান 111.09.24</a></li>
-        <li><a href="byakaronik-shabdashreni-02-10-24.pdf" target="_blank">৩। ব্যাকরণিক শব্দশ্রেণি 02.10.24</a></li>
-        <li><a href="uposarga-samas.pdf" target="_blank">৪। উপসর্গ, সমাস</a></li>
-        <li><a href="bakkatattwa-10-10-24.pdf" target="_blank">৫। বাক্যতত্ত্ব 10.10.24</a></li>
-        <li><a href="prayog-apoprayog-11-10-24.pdf" target="_blank">০৬। প্রয়োগ-অপপ্রয়োগ 11.10.24</a></li>
-        <li><a href="paribhashik-shabda-12-10-24.pdf" target="_blank">৭। পারিভাষিক শব্দ - 12.10.24</a></li>
-        <li><a href="dinlipi-protibedan-10-09-2024.pdf" target="_blank">০৮। দিনলিপি- প্রতিবেদন- 10.09.2024</a></li>
-        <li><a href="email-abedanpatra-likhon-06-11-24.pdf" target="_blank">০৯। ই-মেইল, আবেদনপত্র লিখন 06.11.24</a></li>
-        <li><a href="vab-samprosaron-02-11-24.pdf" target="_blank">১০। ভাব-সম্প্রসারণ; সারমর্ম, সারাংশ 02.11.24</a></li>
-    </ul>
+  <h1>পিডিএফ তালিকা</h1>
+  <ul>
+    <li><a href="uchcharon-12-font-02-10-24.pdf" target="_blank">১। উচ্চারণ 12 font-02.10.24</a></li>
+    <li><a href="uchcharon-12-font-227-08-24.pdf" target="_blank">১। উচ্চারণ 12 font-227.08.24</a></li>
+    <li><a href="banan-11-09-24.pdf" target="_blank">২। বানান 11.09.24</a></li>
+    <li><a href="banan-18-09-24.pdf" target="_blank">২। বানান 18.09.24</a></li>
+    <li><a href="banan-111-09-24.pdf" target="_blank">২। বানান 111.09.24</a></li>
+    <li><a href="byakaronik-shabdashreni-02-10-24.pdf" target="_blank">৩। ব্যাকরণিক শব্দশ্রেণি 02.10.24</a></li>
+    <li><a href="uposarga-samas.pdf" target="_blank">৪। উপসর্গ, সমাস</a></li>
+    <li><a href="bakkatattwa-10-10-24.pdf" target="_blank">৫। বাক্যতত্ত্ব 10.10.24</a></li>
+    <li><a href="prayog-apoprayog-11-10-24.pdf" target="_blank">০৬। প্রয়োগ-অপপ্রয়োগ 11.10.24</a></li>
+    <li><a href="paribhashik-shabda-12-10-24.pdf" target="_blank">৭। পারিভাষিক শব্দ - 12.10.24</a></li>
+    <li><a href="dinlipi-protibedan-10-09-2024.pdf" target="_blank">০৮। দিনলিপি- প্রতিবেদন- 10.09.2024</a></li>
+    <li><a href="email-abedanpatra-likhon-06-11-24.pdf" target="_blank">০৯। ই-মেইল, আবেদনপত্র লিখন 06.11.24</a></li>
+    <li><a href="vab-samprosaron-02-11-24.pdf" target="_blank">১০। ভাব-সম্প্রসারণ; সারমর্ম, সারাংশ 02.11.24</a></li>
+  </ul>
 </body>
 </html>
