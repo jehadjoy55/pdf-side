@@ -46,6 +46,44 @@
       }
     }
 
+    /* Loading Page Styles */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: 1;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #loading.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #loading h1 {
+      color: #ffdd57;
+      font-size: 32px;
+      text-shadow: 0 0 10px rgba(255, 223, 87, 0.8), 0 0 20px rgba(255, 223, 87, 0.6);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
     /* PDF List Styles */
     h1 {
       text-align: center;
@@ -95,24 +133,42 @@
       color: #ffdd57;
     }
   </style>
+  <script>
+    // Function to show the loading screen
+    function showLoading(event, link) {
+      event.preventDefault(); // Prevent default link behavior
+      const loading = document.getElementById('loading');
+      loading.classList.add('active'); // Show loading screen
+      setTimeout(() => {
+        loading.classList.remove('active'); // Hide loading screen
+        window.location.href = link; // Redirect to the PDF after 2 seconds
+      }, 2000);
+    }
+  </script>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div id="loading">
+    <h1>❤️ TAKE LOVE FROM JOY ❤️</h1>
+  </div>
+
+  <!-- PDF List -->
   <h1>পিডিএফ তালিকা</h1>
   <ul>
-    <li><a href="uchcharon-12-font-02-10-24.pdf" target="_blank"> উচ্চারণ 12 font-02.10.24</a></li>
-    <li><a href="uchcharon-12-font-227-08-24.pdf" target="_blank"> উচ্চারণ 12 font-227.08.24</a></li>
-    <li><a href="banan-11-09-24.pdf" target="_blank"> বানান 11.09.24</a></li>
-    <li><a href="banan-18-09-24.pdf" target="_blank"> বানান 18.09.24</a></li>
-    <li><a href="banan-111-09-24.pdf" target="_blank"> বানান 111.09.24</a></li>
-    <li><a href="byakaronik-shabdashreni-02-10-24.pdf" target="_blank"> ব্যাকরণিক শব্দশ্রেণি 02.10.24</a></li>
-    <li><a href="uposarga-samas.pdf" target="_blank"> উপসর্গ, সমাস</a></li>
-    <li><a href="bakkatattwa-10-10-24.pdf" target="_blank"> বাক্যতত্ত্ব 10.10.24</a></li>
-    <li><a href="prayog-apoprayog-11-10-24.pdf" target="_blank"> প্রয়োগ-অপপ্রয়োগ 11.10.24</a></li>
-    <li><a href="paribhashik-shabda-12-10-24.pdf" target="_blank"> পারিভাষিক শব্দ - 12.10.24</a></li>
-    <li><a href="dinlipi-protibedan-10-09-2024.pdf" target="_blank"> দিনলিপি- প্রতিবেদন- 10.09.2024</a></li>
-    <li><a href="email-abedanpatra-likhon-06-11-24.pdf" target="_blank"> ই-মেইল, আবেদনপত্র লিখন 06.11.24</a></li>
-    <li><a href="vab-samprosaron-02-11-24.pdf" target="_blank"> ভাব-সম্প্রসারণ; সারমর্ম, সারাংশ 02.11.24</a></li>
-    <li><a href="songlap-rochona.pdf" target="_blank"> সংলাপ + রচনা</a></li>
+    <li><a href="uchcharon-12-font-02-10-24.pdf" onclick="showLoading(event, 'uchcharon-12-font-02-10-24.pdf')">১। উচ্চারণ 12 font-02.10.24</a></li>
+    <li><a href="uchcharon-12-font-227-08-24.pdf" onclick="showLoading(event, 'uchcharon-12-font-227-08-24.pdf')">১। উচ্চারণ 12 font-227.08.24</a></li>
+    <li><a href="banan-11-09-24.pdf" onclick="showLoading(event, 'banan-11-09-24.pdf')">২। বানান 11.09.24</a></li>
+    <li><a href="banan-18-09-24.pdf" onclick="showLoading(event, 'banan-18-09-24.pdf')">২। বানান 18.09.24</a></li>
+    <li><a href="banan-111-09-24.pdf" onclick="showLoading(event, 'banan-111-09-24.pdf')">২। বানান 111.09.24</a></li>
+    <li><a href="byakaronik-shabdashreni-02-10-24.pdf" onclick="showLoading(event, 'byakaronik-shabdashreni-02-10-24.pdf')">৩। ব্যাকরণিক শব্দশ্রেণি 02.10.24</a></li>
+    <li><a href="uposarga-samas.pdf" onclick="showLoading(event, 'uposarga-samas.pdf')">৪। উপসর্গ, সমাস</a></li>
+    <li><a href="bakkatattwa-10-10-24.pdf" onclick="showLoading(event, 'bakkatattwa-10-10-24.pdf')">৫। বাক্যতত্ত্ব 10.10.24</a></li>
+    <li><a href="prayog-apoprayog-11-10-24.pdf" onclick="showLoading(event, 'prayog-apoprayog-11-10-24.pdf')">০৬। প্রয়োগ-অপপ্রয়োগ 11.10.24</a></li>
+    <li><a href="paribhashik-shabda-12-10-24.pdf" onclick="showLoading(event, 'paribhashik-shabda-12-10-24.pdf')">৭। পারিভাষিক শব্দ - 12.10.24</a></li>
+    <li><a href="dinlipi-protibedan-10-09-2024.pdf" onclick="showLoading(event, 'dinlipi-protibedan-10-09-2024.pdf')">০৮। দিনলিপি- প্রতিবেদন- 10.09.2024</a></li>
+    <li><a href="email-abedanpatra-likhon-06-11-24.pdf" onclick="showLoading(event, 'email-abedanpatra-likhon-06-11-24.pdf')">০৯। ই-মেইল, আবেদনপত্র লিখন 06.11.24</a></li>
+    <li><a href="vab-samprosaron-02-11-24.pdf" onclick="showLoading(event, 'vab-samprosaron-02-11-24.pdf')">১০। ভাব-সম্প্রসারণ; সারমর্ম, সারাংশ 02.11.24</a></li>
+    <li><a href="songlap-rochona.pdf" onclick="showLoading(event, 'songlap-rochona.pdf')">১১। সংলাপ + রচনা</a></li>
   </ul>
 </body>
 </html>
